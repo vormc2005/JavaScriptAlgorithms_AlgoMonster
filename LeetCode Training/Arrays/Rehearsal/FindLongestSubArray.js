@@ -1,25 +1,18 @@
+const array = [3,1,2,7,4,2,1,1,5]
 
-
-const nums = [3,1,2,7,4,2,1,1,5];
-const k = 8
-
-
-function findLongestArray(nums, k){
+function findLenghtOfLongestSubArray(arr, k){
     let left = 0;
-    let curr = 0;//sum
+    let currentSum = 0;
     let answer = 0;
-
-    for(let right = 0; right < nums.length; right++){
-        curr += nums[right]
-        while(curr > k){
-            curr -= nums[left]
-            left++
+    for(let right = 0; right < arr.length; right++){
+        currentSum += arr[right]
+        while(currentSum > k){
+            currentSum -= arr[left]
+            left ++
         }
-
-        answer = Math.max(answer, right-left+1)
+        answer = Math.max(answer, right - left +1)
     }
     return answer
-
 }
 
-console.log(findLongestArray(nums, k))
+console.log(findLenghtOfLongestSubArray(array, 8))
